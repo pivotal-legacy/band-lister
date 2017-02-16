@@ -13,7 +13,8 @@ module.exports = {
       template: './app/index.html'
     }),
     new webpack.EnvironmentPlugin({
-      NODE_SERVER_STARTUP_TIMEOUT: 5000
+      NODE_SERVER_STARTUP_TIMEOUT: 5000,
+      SERVER_URL: 'http://localhost:8080'
     })
   ],
   module: {

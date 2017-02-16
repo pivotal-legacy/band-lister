@@ -12,7 +12,8 @@ export default class BandList extends React.Component {
   }
 
   fetchBands() {
-    return fetch('http://localhost:8080/bands')
+    const urlPath = process.env.SERVER_URL + '/bands'
+    return fetch(urlPath)
       .then((rawData) => {
         return rawData.json()
       })

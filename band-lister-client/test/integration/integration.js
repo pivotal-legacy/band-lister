@@ -43,4 +43,9 @@ describe('integration tests', () => {
     const header = await browser.getText('h1')
     expect(header).toBe('Band Lister')
   })
+
+  it('displays band names in a table', async () => {
+    const nameCellText = await browser.getText('.name')
+    expect(nameCellText[0]).toBe('The Beatles')
+  })
 })
