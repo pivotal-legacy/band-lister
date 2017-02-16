@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --content-base dist/ --port 8000",
     "test": "NODE_SERVER_STARTUP_TIMEOUT=0 mocha test/unit",
-    "integration": "selenium-standalone start > /dev/null 2>&1 & NODE_SERVER_STARTUP_TIMEOUT=6000 mocha test/integration --timeout 10000",
+    "integration": "NODE_SERVER_STARTUP_TIMEOUT=6000 mocha test/integration --timeout 30000",
     "startIntegrationClient": "webpack-dev-server --content-base build/ --port 7000",
     "postinstall": "selenium-standalone install"
   },
