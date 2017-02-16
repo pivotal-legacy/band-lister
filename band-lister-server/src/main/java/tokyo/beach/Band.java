@@ -5,24 +5,28 @@ public class Band {
     private String name;
     private int memberCount;
 
-    public Band(long id, String name, int memberCount) {
+    Band(long id, String name, int memberCount) {
         this.id = id;
         this.name = name;
         this.memberCount = memberCount;
     }
 
+    @SuppressWarnings("unused")
     public long getId() {
         return id;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public String getName() {
         return name;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public int getMemberCount() {
         return memberCount;
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

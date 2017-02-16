@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,11 +26,6 @@ public class BandDataMapperTest {
 
         List<Band> bands = bandDataMapper.getAll();
 
-
-        List<Band> expectedBands = Arrays.asList(
-                new Band(1, "The Beatles", 4),
-                new Band(2, "Radiohead", 5)
-        );
 
         assertThat(bands.size(), equalTo(2));
         assertThat(bands.get(0).getName(), equalTo("The Beatles"));
