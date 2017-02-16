@@ -4,7 +4,11 @@
   "description": "Displays bands",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test --compilers js:babel-core/register --require babel-polyfill"
+    "start": "webpack-dev-server --content-base dist/ --port 8000",
+    "test": "NODE_SERVER_STARTUP_TIMEOUT=0 mocha test/unit",
+    "integration": "selenium-standalone start > /dev/null 2>&1 & NODE_SERVER_STARTUP_TIMEOUT=6000 mocha test/integration --timeout 10000",
+    "startIntegrationClient": "webpack-dev-server --content-base build/ --port 7000",
+    "postinstall": "selenium-standalone install"
   },
   "author": "",
   "license": "ISC",
@@ -14,13 +18,17 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
     "enzyme": "^2.7.1",
     "expect": "^1.20.2",
     "html-webpack-plugin": "^2.28.0",
     "mocha": "^3.2.0",
+    "mock-spawn": "^0.2.6",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
+    "selenium-standalone": "^6.0.1",
+    "webdriverio": "^4.6.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
   }

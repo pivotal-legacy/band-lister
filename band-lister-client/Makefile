@@ -1,7 +1,15 @@
-.PHONY: start test
+.PHONY: start unit integration tests startIntegrationClient
 
 start:
-	@./node_modules/.bin/webpack-dev-server --content-base dist/ --port 8000
+	@npm start
 
-tests:
+unit:
 	@npm test
+
+integration:
+	@npm run integration
+
+tests: unit integration
+
+startIntegrationClient:
+	@npm run startIntegrationClient

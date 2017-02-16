@@ -11,6 +11,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './app/index.html'
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_SERVER_STARTUP_TIMEOUT: 5000
     })
   ],
   module: {
