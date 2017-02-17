@@ -13,3 +13,5 @@ startIntegration:
 
 stopIntegration:
 	@./bin/stopIntegrationServer.sh
+
+ci-unit: tests
