@@ -6,7 +6,7 @@ resources:
     branch: master
 
 jobs:
-- name: tests
+- name: Client Unit Tests
   plan:
   - get: band-lister
     trigger: true
