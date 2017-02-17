@@ -1,0 +1,8 @@
+version "2"
+
+services:
+  mysql-image:
+    image: mysql:5.7.17
+    container_name: mysql-image
+    ports:
+      - "3306:3306"
