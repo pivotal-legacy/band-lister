@@ -25,3 +25,8 @@ startSelenium:
 
 stopSelenium:
 	@./bin/stopSelenium.sh
+
+npm-install:
+	@npm install
+
+ci-unit: npm-install unit
