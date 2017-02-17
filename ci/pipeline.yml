@@ -1,0 +1,25 @@
+resources:
+- name: band-lister
+  type: git
+  source:
+    uri: https://github.com/pivotal-tokyo/band-lister.git
+    branch: master
+
+jobs:
+- name: tests
+  plan:
+  - get: band-lister
+    trigger: true
+  - task: unit-test-client
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: node}
+      inputs:
+      - name: band-lister
+      run:
+        dir: band-lister/band-lister-client
+        path: make
+        args:
+        - ci-unit
