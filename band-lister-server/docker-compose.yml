@@ -6,3 +6,5 @@ services:
     container_name: mysql-image
     ports:
       - "3306:3306"
+    environment:
+      MYSQL_USER: root
