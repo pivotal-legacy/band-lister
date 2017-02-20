@@ -55,14 +55,14 @@ public class BandDataMapperTest {
 
     private DataSource createDataSource() {
         DataSource dataSource = new DataSource();
-        dataSource.setUrl("jdbc:mysql://localhost/band_lister_test");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/band_lister_test");
         dataSource.setUsername("root");
         return dataSource;
     }
 
     private DataSource createLoginDataSource() {
         DataSource dataSource = new DataSource();
-        dataSource.setUrl("jdbc:mysql://localhost");
+        dataSource.setUrl("jdbc:mysql://localhost:3306");
         dataSource.setUsername("root");
         return dataSource;
     }
