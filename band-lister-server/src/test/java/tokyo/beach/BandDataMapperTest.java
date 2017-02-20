@@ -57,6 +57,7 @@ public class BandDataMapperTest {
         DataSource dataSource = new DataSource();
         dataSource.setUrl("jdbc:mysql://mysql-image:3306/band_lister_test");
         dataSource.setUsername("root");
+        dataSource.setPassword("");
         return dataSource;
     }
 
@@ -64,6 +65,7 @@ public class BandDataMapperTest {
         DataSource dataSource = new DataSource();
         dataSource.setUrl("jdbc:mysql://mysql-image:3306/mysql");
         dataSource.setUsername("root");
+        dataSource.setPassword("");
         return dataSource;
     }
 
