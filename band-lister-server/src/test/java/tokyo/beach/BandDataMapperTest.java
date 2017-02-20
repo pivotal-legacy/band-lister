@@ -62,7 +62,7 @@ public class BandDataMapperTest {
 
     private DataSource createLoginDataSource() {
         DataSource dataSource = new DataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mysql");
         dataSource.setUsername("root");
         return dataSource;
     }
