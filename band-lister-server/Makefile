@@ -22,4 +22,4 @@ reset-dev-db:
 	@mysql -uroot < ./src/main/resources/db/refreshDevDatabase.sql
 	@mysql -uroot band_lister_dev < ./src/main/resources/db/schema.sql
 
-ci-unit: reset-test-db tests
+ci-unit: tests
