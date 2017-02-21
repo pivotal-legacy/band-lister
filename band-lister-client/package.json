@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --content-base dist/ --port 8000",
     "test": "NODE_SERVER_STARTUP_TIMEOUT=0 mocha test/unit",
-    "integration": "SERVER_URL='http://localhost:7070' NODE_SERVER_STARTUP_TIMEOUT=6000 mocha test/integration --timeout 30000",
-    "ci-integration": "SERVER_URL='http://localhost:7070' mocha test/ci-integration --timeout 30000",
+    "integration": "SERVER_URL='http://localhost:7070' NODE_SERVER_STARTUP_TIMEOUT=6000 mocha test/integration/local --timeout 30000",
+    "ci-integration": "SERVER_URL='http://localhost:7070' mocha test/integration/ci --timeout 30000",
     "startIntegrationClient": "webpack-dev-server --content-base build/ --port 7000",
     "postinstall": "selenium-standalone install"
   },

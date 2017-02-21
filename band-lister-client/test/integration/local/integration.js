@@ -1,9 +1,9 @@
 import expect from 'expect'
 import * as webdriverio from 'webdriverio'
 
-import SeleniumProcessOperator from './helpers/SeleniumProcessOperator'
-import ClientProcessOperator from './helpers/ClientProcessOperator'
-import ServerProcessOperator from './helpers/ServerProcessOperator'
+import SeleniumProcessOperator from '../helpers/SeleniumProcessOperator'
+import ClientProcessOperator from '../helpers/ClientProcessOperator'
+import ServerProcessOperator from '../helpers/ServerProcessOperator'
 
 let selenium, client, server
 

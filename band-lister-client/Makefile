@@ -1,4 +1,4 @@
-.PHONY: start unit integration tests startIntegrationClient
+.PHONY: start unit integration tests startIntegrationClient npm-install ci-integration
 
 start:
 	@npm start
@@ -32,4 +32,4 @@ npm-install:
 ci-unit: npm-install unit
 
 ci-integration:
-	@npm install -g http-server && @npm install && @npm run ci-integration >> ./test/integration/result.txt
+	@npm install -g http-server && npm install && npm run ci-integration > ./test/integration/result.txt

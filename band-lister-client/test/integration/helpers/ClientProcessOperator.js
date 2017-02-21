@@ -17,8 +17,8 @@ export default class ClientProcessOperator {
   }
 
   async waitStart() {
-    sleep(20000)
-    start()
+    this.sleep(20000)
+    this.start()
   }
 
   sleep(timeoutInMilliseconds) {
