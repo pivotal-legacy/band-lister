@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  mysql-image:
+    image: mysql:5.7.17
+    container_name: mysql-image
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  node-image:
+    image: node
+    container_name: node-image
+    ports:
+      - "7070:7070"
+    volumes:
+      - /band-lister/band-lister-client:/
