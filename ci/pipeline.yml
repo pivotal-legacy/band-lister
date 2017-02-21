@@ -4,6 +4,11 @@ resources:
   source:
     uri: https://github.com/pivotal-tokyo/band-lister.git
     branch: master
+- name: mysql-image
+  type: docker-image
+  source:
+    repository: mysql
+    tag: '5.7.17'
 
 jobs:
 - name: Client Unit Tests
@@ -23,3 +28,34 @@ jobs:
         path: make
         args:
         - ci-unit
+
+- name: Server Unit tests
+  plan:
+  - aggregate:
+    - get: band-lister
+      trigger: true
+    - get: mysql-image
+      params:
+        save: true
+  - task: unit-test-server
+    privileged: true
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: tokyobeach/dockercompose-jdk-make
+      inputs:
+      - name: band-lister
+      - name: mysql-image
+      run:
+        path: sh
+        args:
+        - -c
+        - |
+          source /docker-lib.sh
+          start_docker
+          cd band-lister/band-lister-server
+          docker-compose up -d
+          make ci-unit
+          docker-compose down
