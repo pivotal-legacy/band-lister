@@ -55,7 +55,7 @@ jobs:
         - |
           source /docker-lib.sh
           start_docker
-          cd /band-lister/band-lister-server
+          cd band-lister/band-lister-server
           docker-compose -f ./src/test/resources/docker-compose.yml up -d
           make ci-unit
-          docker-compose down
+          docker-compose -f ./src/test/resources/docker-compose.yml down
