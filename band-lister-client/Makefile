@@ -32,4 +32,4 @@ npm-install:
 ci-unit: npm-install unit
 
 ci-integration:
-	@npm install && @npm ci-integration
+	@npm install -g http-server && @npm install && @npm ci-integration >> ./test/integration/result.txt
