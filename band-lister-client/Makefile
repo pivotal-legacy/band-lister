@@ -30,3 +30,6 @@ npm-install:
 	@npm install
 
 ci-unit: npm-install unit
+
+ci-integration:
+	@npm install && @npm ci-integration

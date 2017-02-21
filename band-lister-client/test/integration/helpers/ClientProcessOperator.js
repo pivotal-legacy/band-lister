@@ -16,6 +16,16 @@ export default class ClientProcessOperator {
     })
   }
 
+  async waitStart() {
+    sleep(20000)
+    start()
+  }
+
+  sleep(timeoutInMilliseconds) {
+    var currentTime = new Date().getTime();
+    while (currentTime + timeoutInMilliseconds >= new Date().getTime()) {}
+  }
+
   stop() {
     this.process.kill()
   }
