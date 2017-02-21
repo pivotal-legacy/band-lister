@@ -15,4 +15,4 @@ services:
     ports:
       - "7070:7070"
     volumes:
-      - /band-lister/band-lister-client:/
+      - /band-lister/band-lister-client:/ci/
