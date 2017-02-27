@@ -3,6 +3,6 @@ import { render } from 'react-dom'
 import BandListContainer from './BandListContainer'
 
 render(
-  <BandList/>,
+  <BandListContainer/>,
   document.getElementById('band-lister')
 )

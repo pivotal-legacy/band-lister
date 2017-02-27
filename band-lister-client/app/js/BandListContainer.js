@@ -1,5 +1,7 @@
 import React from 'react'
 
+import BandList from './BandList'
+
 export default class BandListContainer extends React.Component {
   constructor(props) {
     super(props)
@@ -28,29 +30,7 @@ export default class BandListContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Band Lister</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>name</th>
-              <th>member count</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.bands.map((band) => {
-              return (
-                <tr key={band.id}>
-                  <td className='id'>{band.id}</td>
-                  <td className='name'>{band.name}</td>
-                  <td className='member-count'>{band.memberCount}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
+      <BandList bands={this.state.bands}/>
     )
   }
 }
