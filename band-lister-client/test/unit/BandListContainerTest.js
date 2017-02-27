@@ -1,22 +1,22 @@
 import expect from 'expect'
 import React from 'react'
 import {shallow} from 'enzyme'
-import BandList from '../../app/js/BandList'
+import BandListContainer from '../../app/js/BandListContainer'
 
-describe('BandList', () => {
+describe('BandListContainer', () => {
   it('displays returned bands in table', () => {
     const bands = [
       {id: '1', name: 'The Beatles', memberCount: '4'},
       {id: '2', name: 'Radiohead', memberCount: '5'}
     ]
 
-    expect.spyOn(BandList.prototype, 'fetchBands').andReturn(
+    expect.spyOn(BandListContainer.prototype, 'fetchBands').andReturn(
       {then: (callback) => {
         callback(bands)
       }}
     )
 
-    let bandList = shallow(<BandList/>)
+    let bandList = shallow(<BandListContainer/>)
     const rows = bandList.find('tbody tr')
 
     expect(rows.nodes[0].props.children).toContain(<td className='id'>1</td>)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import BandList from './BandList'
+import BandListContainer from './BandListContainer'
 
 render(
   <BandList/>,

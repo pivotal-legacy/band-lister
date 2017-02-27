@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class BandList extends React.Component {
+export default class BandListContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {bands: []}
