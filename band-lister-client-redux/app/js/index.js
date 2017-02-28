@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
-import BandListContainer from './BandListContainer'
+import AppComponent from './AppComponent'
 
 render(
-  <BandListContainer/>,
+  <AppComponent/>,
   document.getElementById('band-lister')
 )

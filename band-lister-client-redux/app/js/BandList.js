@@ -1,6 +1,10 @@
 import React from 'react'
 
 export default class BandList extends React.Component {
+  componentDidMount() {
+    this.props.fetchBands()
+  }
+
   render() {
     return(
       <div>
@@ -33,9 +37,9 @@ export default class BandList extends React.Component {
 BandList.propTypes = {
   bands: React.PropTypes.arrayOf(
     React.PropTypes.shape({
-      id: React.PropTypes.string,
+      id: React.PropTypes.number,
       name: React.PropTypes.string,
-      memberCount: React.PropTypes.string
+      memberCount: React.PropTypes.number
     })
   )
 }
