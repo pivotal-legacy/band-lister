@@ -41,6 +41,6 @@ BandList.propTypes = {
       name: React.PropTypes.string,
       memberCount: React.PropTypes.number
     })
-  ),
+  ).isRequired,
   fetchBands: React.PropTypes.func.isRequired
 }

@@ -1,5 +1,5 @@
 import expect from 'expect'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import React from 'react'
 
 import BandList from '../../app/js/BandList'
@@ -24,5 +24,12 @@ describe('BandList', () => {
     expect(rowsWithId.nodes[1].props.children).toBe(2)
     expect(rowsWithName.nodes[1].props.children).toBe('Radiohead')
     expect(rowsWithMemberCount.nodes[1].props.children).toBe(5)
+  })
+
+  it('fetches bands on mount', () => {
+    const fetchBandsSpy = expect.createSpy()
+    const bandList = mount(<BandList fetchBands={fetchBandsSpy} bands={[]}/>)
+
+    expect(fetchBandsSpy).toHaveBeenCalled()
   })
 })
