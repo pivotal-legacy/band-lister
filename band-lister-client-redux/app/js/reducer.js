@@ -1,20 +1,22 @@
 import { combineReducers } from 'redux'
 
 function bands(state=[], action) {
-  switch (action.type) {
+  const {type, data} = action
+  switch (type) {
     case 'FETCH_BANDS_SUCCESS':
-      return action.bands
+      return data
     default:
       return state
   }
 }
 
 function currentBand(state={}, action) {
-  switch (action.type) {
+  const {type, data} = action
+  switch (type) {
     case 'FETCH_BAND_SUCCESS':
-      return action.currentBand
+      return data
     default:
-      return state
+      return {}
   }
 }
 
