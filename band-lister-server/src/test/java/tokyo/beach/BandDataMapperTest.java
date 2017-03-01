@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -51,6 +52,31 @@ public class BandDataMapperTest {
         assertThat(bands.get(0).getMemberCount(), equalTo(4));
         assertThat(bands.get(1).getName(), equalTo("Radiohead"));
         assertThat(bands.get(1).getMemberCount(), equalTo(5));
+    }
+
+    @Test
+    public void test_getById_returnsBand_onSuccess() throws Exception {
+        int bandId = createFakeBand(jdbcTemplate, "The Beatles", 4);
+
+        BandDataMapper bandDataMapper = new BandDataMapper(jdbcTemplate);
+
+
+        Optional<Band> maybeBand = bandDataMapper.getById(Long.valueOf(bandId));
+
+
+        assertThat(maybeBand.get().getName(), equalTo("The Beatles"));
+        assertThat(maybeBand.get().getMemberCount(), equalTo(4));
+    }
+
+    @Test
+    public void test_getById_returnsEmpty_onFailure() throws Exception {
+        BandDataMapper bandDataMapper = new BandDataMapper(jdbcTemplate);
+
+
+        Optional<Band> maybeBand = bandDataMapper.getById(Long.MAX_VALUE);
+
+
+        assertThat(maybeBand.isPresent(), equalTo(false));
     }
 
     private DataSource createDataSource() {
@@ -91,13 +117,13 @@ public class BandDataMapperTest {
         jdbcTemplate.execute("DELETE FROM bands");
     }
 
-    private void createFakeBand(JdbcTemplate jdbcTemplate, String name, int memberCount) {
+    private int createFakeBand(JdbcTemplate jdbcTemplate, String name, int memberCount) {
         SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
 
         Map parameters = new HashMap();
         parameters.put("name", name);
         parameters.put("member_count", memberCount);
 
-        simpleJdbcInsert.withTableName("bands").execute(parameters);
+        return simpleJdbcInsert.withTableName("bands").execute(parameters);
     }
 }
