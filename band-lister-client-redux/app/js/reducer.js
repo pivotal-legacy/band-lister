@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-function bands(state=[], action) {
+export const bands = (state=[], action) => {
   const {type, data} = action
   switch (type) {
     case 'FETCH_BANDS_SUCCESS':
@@ -10,7 +10,7 @@ function bands(state=[], action) {
   }
 }
 
-function currentBand(state={}, action) {
+export const currentBand = (state={}, action) => {
   const {type, data} = action
   switch (type) {
     case 'FETCH_BAND_SUCCESS':
