@@ -1,7 +1,7 @@
 import expect from 'expect'
 
 import {mapStateToProps, mapDispatchToProps} from '../../app/js/BandListContainer'
-import {fetchBands} from '../../app/js/BandActions'
+import {fetchBands} from '../../app/js/actions'
 
 describe('BandListContainer', () => {
   it('maps bands to props', () => {

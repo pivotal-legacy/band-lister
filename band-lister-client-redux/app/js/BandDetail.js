@@ -6,7 +6,10 @@ export default class BandDetail extends React.Component {
   }
 
   render() {
-    const band = this.props.band
+    let band={}
+    if (this.props.band) {
+      band = this.props.band
+    }
     return (
       <ul key={band.id}>
         <li className='id'>{band.id}</li>
@@ -22,6 +25,6 @@ BandDetail.propTypes = {
     id: React.PropTypes.number,
     name: React.PropTypes.string,
     memberCount: React.PropTypes.number
-  }).isRequired,
+  }),
   fetchBand: React.PropTypes.func.isRequired
 }

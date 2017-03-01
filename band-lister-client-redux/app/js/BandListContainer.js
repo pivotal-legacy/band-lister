@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import BandList from './BandList'
-import {fetchBands} from './BandActions'
+import {fetchBands} from './actions'
 
 export const mapStateToProps = (state) => {
   return {
