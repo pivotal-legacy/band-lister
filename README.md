@@ -5,7 +5,7 @@ simple app with Spring server and React Frontend
 ## Getting Started
 
 ### Server (`band-lister-server`)
-A Java Spring Boot app with jdbc and mysql 
+A Java Spring Boot app with jdbc and mysql
 #### Prerequisites
 - Java
 - MySQL
@@ -18,7 +18,8 @@ A Java Spring Boot app with jdbc and mysql
 - `make start` (starts the server up on port 8080)
 
 #### Testing
-- `make tests` (run unit tests)
+- `make unit` (run unit tests)
+- `make tests` (runs unit tests, followed by integration tests for each client with client on port 7000 and server on port 7070)
 
 ### Client (`band-lister-react`)
 A React app (no redux)

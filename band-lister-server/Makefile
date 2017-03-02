@@ -1,7 +1,15 @@
 .PHONY: tests run start
 
-tests:
+unit:
 	@./gradlew clean build test
+
+integration-react:
+	@cd ../band-lister-react && make integration && cd -
+
+integration-react-redux:
+	@cd ../band-lister-react-redux && make integration && cd -
+
+tests: unit integration-react integration-react-redux
 
 run:
 	@ DATABASE_URL=jdbc:mysql://localhost:3306/band_lister_dev java -jar ./build/libs/band-lister-server-0.0.1-SNAPSHOT.jar
@@ -23,4 +31,4 @@ reset-dev-db:
 	@mysql -uroot band_lister_dev < ./src/main/resources/db/schema.sql
 	@mysql -uroot band_lister_dev < ./src/main/resources/db/seed.sql
 
-ci-unit: tests
+ci-unit: unit

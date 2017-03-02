@@ -12,7 +12,7 @@ before(async () => {
   selenium = new SeleniumProcessOperator()
   await selenium.start()
 
-  console.log("Starting client...")
+  console.log("Starting band-lister-react-redux client...")
   client = new ClientProcessOperator()
   await client.start()
 
