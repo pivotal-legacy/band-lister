@@ -46,6 +46,6 @@ describe('integration tests', () => {
 
   it('displays band names in a table', async () => {
     const nameCellText = await browser.getText('.name')
-    expect(nameCellText[0]).toBe('The Beatles')
+    expect(nameCellText).toBe('The Beatles')
   })
 })
