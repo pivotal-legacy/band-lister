@@ -8,7 +8,7 @@ describe('BandDetail', () => {
   it('renders current band details', () => {
     const currentBand = {id: 1, name: 'The Beatles', memberCount: 4}
 
-    const bandDetail = shallow(<BandDetail fetchCurrentBand={()=>{}} band={currentBand}/>)
+    const bandDetail = shallow(<BandDetail fetchBand={()=>{}} band={currentBand}/>)
 
     const rowWithId = bandDetail.find('ul li .id')
     const rowWithName = bandDetail.find('ul li .name')

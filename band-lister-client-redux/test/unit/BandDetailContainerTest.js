@@ -16,7 +16,8 @@ describe('BandDetailContainer', () => {
 
   it('maps fetch band function to props', () => {
     const dispatchspy = expect.createSpy()
-    const props = mapDispatchToProps(dispatchspy)
+    const ownProps = {params: { bandId: 1}}
+    const props = mapDispatchToProps(dispatchspy, ownProps)
     const fetchThenDispatchSpy = expect.spyOn(actions, 'fetchThenDispatch')
     process.env.SERVER_URL = 'http://hellohost:1234'
     const url = 'http://hellohost:1234/bands/1'

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 export default class BandList extends React.Component {
   componentDidMount() {
@@ -19,10 +20,11 @@ export default class BandList extends React.Component {
           </thead>
           <tbody>
             {this.props.bands.map((band) => {
+
               return (
                 <tr key={band.id}>
                   <td className='id'>{band.id}</td>
-                  <td className='name'>{band.name}</td>
+                  <td className='name'><Link to={`/bands/${band.id}`}>{band.name}</Link></td>
                   <td className='member-count'>{band.memberCount}</td>
                 </tr>
               )

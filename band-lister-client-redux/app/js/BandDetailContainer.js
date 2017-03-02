@@ -7,9 +7,9 @@ export const mapStateToProps = state => ({
   band: state.currentBand
 })
 
-export const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchBand: () => {
-    const urlPath = process.env.SERVER_URL + '/bands/' + 1
+    const urlPath = process.env.SERVER_URL + '/bands/' + ownProps.params.bandId
     fetchThenDispatch(urlPath, 'FETCH_BAND', dispatch)
   }
 })

@@ -14,11 +14,11 @@ describe('BandList', () => {
     const bandList = shallow(<BandList fetchBands={()=>{}} bands={bands}/>)
 
     const rowsWithId = bandList.find('tbody tr .id')
-    const rowsWithName = bandList.find('tbody tr .name')
+    const rowsWithName = bandList.find('tbody tr Link')
     const rowsWithMemberCount = bandList.find('tbody tr .member-count')
 
     expect(rowsWithId.nodes[0].props.children).toBe(1)
-    expect(rowsWithName.nodes[0].props.children).toBe('The Beatles')
+    expect(rowsWithName.node.props.children).toBe('The Beatles')
     expect(rowsWithMemberCount.nodes[0].props.children).toBe(4)
 
     expect(rowsWithId.nodes[1].props.children).toBe(2)
