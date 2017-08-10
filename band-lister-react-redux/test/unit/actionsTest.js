@@ -8,15 +8,15 @@ describe('actions', () => {
 
   describe('fetchThenDispatch', () => {
     it('makes request to correct url', () => {
-      const fetchJsonSpy = expect.spyOn(fetcher, 'fetchJson').andReturn({then:()=>{}})
+      const httpGetSpy = expect.spyOn(fetcher, 'httpGet').andReturn({then:()=>{}})
 
       actions.fetchThenDispatch('http://example.com', 'FETCH_BANDS', ()=>{})
 
-      expect(fetchJsonSpy).toHaveBeenCalledWith('http://example.com')
+      expect(httpGetSpy).toHaveBeenCalledWith('http://example.com')
     })
 
     it('makes dispatch with correct action', () => {
-      expect.spyOn(fetcher, 'fetchJson')
+      expect.spyOn(fetcher, 'httpGet')
         .andReturn({then: (callback) => callback({fetchedData: 'fetchedData'})})
       const dispatchSpy = expect.createSpy()
 
