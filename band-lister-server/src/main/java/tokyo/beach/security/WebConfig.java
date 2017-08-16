@@ -1,4 +1,4 @@
-package tokyo.beach;
+package tokyo.beach.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -11,6 +11,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**");
+        registry.addMapping("/**")
+            .allowedMethods("GET", "POST")
+            .allowedOrigins("http://localhost:8000");
     }
 }

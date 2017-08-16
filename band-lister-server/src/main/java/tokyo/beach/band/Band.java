@@ -1,11 +1,11 @@
-package tokyo.beach;
+package tokyo.beach.band;
 
 public class Band {
     private long id;
     private String name;
     private int memberCount;
 
-    Band(long id, String name, int memberCount) {
+    public Band(long id, String name, int memberCount) {
         this.id = id;
         this.name = name;
         this.memberCount = memberCount;
@@ -16,12 +16,12 @@ public class Band {
         return id;
     }
 
-    @SuppressWarnings("WeakerAccess")
+    @SuppressWarnings("unused")
     public String getName() {
         return name;
     }
 
-    @SuppressWarnings("WeakerAccess")
+    @SuppressWarnings("unused")
     public int getMemberCount() {
         return memberCount;
     }

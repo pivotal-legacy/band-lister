@@ -1,15 +1,12 @@
-package tokyo.beach;
+package tokyo.beach.band;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Collections;
-import java.util.Optional;
-
+import static java.util.Collections.singletonList;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -18,21 +15,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 public class BandControllerTest {
-    BandDataMapper mockBandDataMapper;
-    MockMvc mockController;
+    private BandRepo mockBandRepo;
+    private MockMvc mockController;
 
     @Before
     public void setUp() throws Exception {
-        mockBandDataMapper = mock(BandDataMapper.class);
-        BandController bandController = new BandController(mockBandDataMapper);
+        mockBandRepo = mock(BandRepo.class);
+        BandController bandController = new BandController(mockBandRepo);
         mockController = standaloneSetup(bandController).build();
     }
 
     @Test
     public void test_getAll_returnsBandsOnSuccess() throws Exception {
-        when(mockBandDataMapper.getAll()).thenReturn(
-                Collections.singletonList(new Band(1, "The Beatles", 4))
-        );
+        when(mockBandRepo.getAll())
+                .thenReturn(singletonList(new Band(1, "The Beatles", 4)));
 
         mockController.perform(get("/bands"))
                 .andExpect(status().isOk())
@@ -43,9 +39,8 @@ public class BandControllerTest {
 
     @Test
     public void test_getByName_returnsBandOnSuccess() throws Exception {
-        when(mockBandDataMapper.getById(anyLong())).thenReturn(
-                Optional.of(new Band(1L, "The Beatles", 4))
-        );
+        when(mockBandRepo.getById(anyLong()))
+                .thenReturn(new Band(1L, "The Beatles", 4));
 
         mockController.perform(get("/bands/1"))
                 .andExpect(status().isOk())

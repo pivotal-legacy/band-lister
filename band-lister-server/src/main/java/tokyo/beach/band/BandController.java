@@ -1,4 +1,4 @@
-package tokyo.beach;
+package tokyo.beach.band;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,20 +10,19 @@ import java.util.List;
 @RequestMapping("/bands")
 @RestController
 public class BandController {
-    private BandDataMapper bandDataMapper;
+    private BandRepo bandRepo;
 
-    BandController(BandDataMapper bandDataMapper) {
-        this.bandDataMapper = bandDataMapper;
+    public BandController(BandRepo bandRepo) {
+        this.bandRepo = bandRepo;
     }
 
     @GetMapping
     public List<Band> getAll() {
-        return bandDataMapper.getAll();
+        return bandRepo.getAll();
     }
 
     @GetMapping("{id}")
     public Band getById(@PathVariable Long id) {
-        return bandDataMapper.getById(id)
-                .orElseThrow(() -> new RuntimeException("could not find band"));
+        return bandRepo.getById(id);
     }
 }
