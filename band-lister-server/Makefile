@@ -14,7 +14,7 @@ tests: unit integration-react integration-react-redux
 run:
 	@ DATABASE_URL=jdbc:mysql://localhost:3306/band_lister_dev java -jar ./build/libs/band-lister-server-0.0.1-SNAPSHOT.jar
 
-start: tests run
+start: unit run
 
 startIntegration:
 	@./gradlew clean build test && DATABASE_URL=jdbc:mysql://localhost:3306/band_lister_test java -Dserver.port=7070 -jar ./build/libs/band-lister-server-0.0.1-SNAPSHOT.jar &
