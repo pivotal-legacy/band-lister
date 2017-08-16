@@ -1,8 +1,13 @@
 import React from 'react'
 
 export default class LoginPage extends React.Component {
+  constructor(props) {
+    super(props)
+    this.submitForm = this.submitForm.bind(this)
+  }
+
   submitForm(event) {
-    console.log('submit')
+    this.props.login('user', 'secret')
   }
 
   render () {

@@ -36,5 +36,8 @@
     "webdriverio": "^4.6.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0"
   }
 }

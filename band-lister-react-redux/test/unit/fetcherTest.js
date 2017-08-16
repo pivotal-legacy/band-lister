@@ -1,5 +1,6 @@
-import { httpGet, httpPost } from '../../app/js/fetcher'
 import expect from 'expect'
+import base64 from 'base-64'
+import { httpGet, httpLogin } from '../../app/js/fetcher'
 import * as fetchWrapper from '../../app/js/globalWrappers/fetchWrapper'
 
 describe('fetcher', () => {
@@ -15,23 +16,25 @@ describe('fetcher', () => {
 
       expect(fetchSpy).toHaveBeenCalled()
       expect(fetchSpy.calls[0].arguments[0]).toBe(url)
-      expect(fetchSpy.calls[0].arguments[1]).toEqual({})
+      expect(fetchSpy.calls[0].arguments[1].headers['Content-Type']).toBe('application/json')
+      expect(fetchSpy.calls[0].arguments[1].headers['Accept']).toBe('application/json')
     })
   })
 
-  describe('httpPost', () => {
+  describe('httpLogin', () => {
     it('calls url with correct options', () => {
       const fetchSpy = expect.spyOn(fetchWrapper, 'fetchWrapper')
       .andReturn({then: callback => {callback({json: () => {}})}})
 
       const url = 'http://example.com/test'
-      const body = {username: 'guest', password: 'secret'}
-      httpPost(url, body)
+      httpLogin(url, 'guest', 'secret')
 
       expect(fetchSpy).toHaveBeenCalled()
       expect(fetchSpy.calls[0].arguments[0]).toBe(url)
-      expect(fetchSpy.calls[0].arguments[1].body).toBe(body)
-      expect(fetchSpy.calls[0].arguments[1].method).toBe('post')
+      expect(fetchSpy.calls[0].arguments[1].headers['Authorization']).toBe(`BASIC ${base64.encode('guest:secret')}`)
+      expect(fetchSpy.calls[0].arguments[1].headers['Content-Type']).toBe('application/json')
+      expect(fetchSpy.calls[0].arguments[1].headers['Accept']).toBe('application/json')
+      expect(fetchSpy.calls[0].arguments[1].method).toBe('POST')
     })
   })
 })

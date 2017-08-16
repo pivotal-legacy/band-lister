@@ -4,7 +4,12 @@ import * as actions from '../../app/js/actions'
 import * as fetcher from '../../app/js/fetcher'
 
 describe('actions', () => {
-  beforeEach(() => expect.restoreSpies())
+  let dispatchSpy
+  beforeEach(() => {
+    expect.restoreSpies()
+    dispatchSpy = expect.createSpy()
+    process.env.SERVER_URL = 'testUrl'
+  })
 
   describe('fetchThenDispatch', () => {
     it('makes request to correct url', () => {
@@ -18,11 +23,23 @@ describe('actions', () => {
     it('makes dispatch with correct action', () => {
       expect.spyOn(fetcher, 'httpGet')
         .andReturn({then: (callback) => callback({fetchedData: 'fetchedData'})})
-      const dispatchSpy = expect.createSpy()
 
       actions.fetchThenDispatch('http://example.com', 'FETCH_BANDS', dispatchSpy)
 
       expect(dispatchSpy).toHaveBeenCalledWith({ type: 'FETCH_BANDS_SUCCESS', data: {fetchedData: 'fetchedData'}})
+    })
+  })
+
+  describe('loginThenDispatch', () => {
+    it('makes request to correct url', () => {
+      const httpLoginSpy = expect.spyOn(fetcher, 'httpLogin').andReturn({then:()=>{}})
+
+      actions.loginThenDispatch(dispatchSpy, 'test user', 'test password')
+
+      expect(httpLoginSpy).toHaveBeenCalled()
+      expect(httpLoginSpy.calls[0].arguments[0]).toBe('testUrl/login')
+      expect(httpLoginSpy.calls[0].arguments[1]).toBe('test user')
+      expect(httpLoginSpy.calls[0].arguments[2]).toBe('test password')
     })
   })
 })
