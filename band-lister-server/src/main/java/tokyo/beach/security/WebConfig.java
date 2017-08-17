@@ -13,6 +13,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
             .allowedMethods("GET", "POST")
-            .allowedOrigins("http://localhost:8000");
+            .allowedOrigins("http://localhost:8000")
+            .exposedHeaders("x-auth-token");
     }
 }
