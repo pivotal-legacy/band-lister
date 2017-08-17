@@ -1,8 +1,10 @@
 import expect from 'expect'
 
 import * as reducer from '../../app/js/reducer'
+import * as localStorage from '../../app/js/globalWrappers/localStorageWrapper'
 
 describe('reducer', () => {
+  beforeEach(() => expect.restoreSpies())
   describe('bands reducer', () => {
     it('sets bands data to nextState on successful action', () => {
       const bands = [
@@ -31,8 +33,8 @@ describe('reducer', () => {
     })
   })
 
-  describe('band reducer', () => {
-    it('sets band data to nextState on successful action', () => {
+  describe('current band reducer', () => {
+    it('sets current band data to nextState on successful action', () => {
       const band = {id: 1, name: 'The Beatles', memberCount: 4}
       const action = {
         type: 'FETCH_BAND_SUCCESS',
@@ -53,6 +55,42 @@ describe('reducer', () => {
       const nextState = reducer.currentBand(undefined, action)
 
       expect(nextState).toEqual({})
+    })
+  })
+
+  describe('currentUser reducer', () => {
+    it('sets x-auth-token on successful action', () => {
+      const setTokenSpy = expect.spyOn(localStorage, 'setToken')
+      const getHeaderSpy = expect.createSpy().andReturn('fakeToken')
+
+      const type = 'LOGIN_SUCCESS'
+      const data = {
+        headers: {get: getHeaderSpy},
+        json: () => {}
+      }
+      const action = { type, data }
+
+      const nextState = reducer.currentUser(undefined, action)
+
+      expect(setTokenSpy).toHaveBeenCalled()
+      expect(setTokenSpy.calls[0].arguments[0]).toBe('fakeToken')
+    })
+
+    it('sets current user to nextState on success', () => {
+      const setTokenSpy = expect.spyOn(localStorage, 'setToken')
+
+      const type = 'LOGIN_SUCCESS'
+      const data = {
+        headers: {get: ()=>{}},
+        json: () => {
+          return {username: 'test user'}
+        }
+      }
+      const action = { type, data }
+
+      const nextState = reducer.currentUser(undefined, action)
+
+      expect(nextState).toEqual({username: 'test user'})
     })
   })
 })

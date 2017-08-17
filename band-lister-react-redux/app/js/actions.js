@@ -8,5 +8,5 @@ export const fetchThenDispatch = (url, type, dispatch) => {
 export const loginThenDispatch = (dispatch, username, password) => {
   const url = process.env.SERVER_URL + '/login'
   httpLogin(url, username, password)
-    .then(data => console.log('data returned', data))
+    .then(data => dispatch({type: 'LOGIN_SUCCESS', data}))
 }

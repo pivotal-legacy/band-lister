@@ -41,5 +41,16 @@ describe('actions', () => {
       expect(httpLoginSpy.calls[0].arguments[1]).toBe('test user')
       expect(httpLoginSpy.calls[0].arguments[2]).toBe('test password')
     })
+
+    it('makes dispatch with correct action', () => {
+      expect.spyOn(fetcher, 'httpLogin')
+        .andReturn({then: (callback) => callback({fetchedData: 'fetchedData'})})
+
+      actions.loginThenDispatch(dispatchSpy, 'test user', 'test password')
+
+      expect(dispatchSpy).toHaveBeenCalled()
+      expect(dispatchSpy.calls[0].arguments[0].type).toBe('LOGIN_SUCCESS')
+      expect(dispatchSpy.calls[0].arguments[0].data).toEqual({fetchedData: 'fetchedData'})
+    })
   })
 })
