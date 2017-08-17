@@ -1,7 +1,9 @@
+import React from 'react'
 import expect, {spyOn, createSpy} from 'expect'
-
 import * as actions from '../../app/js/actions'
 import * as fetcher from '../../app/js/fetcher'
+import AppComponent from '../../app/js/AppComponent'
+import * as router from 'react-router'
 
 describe('actions', () => {
   let dispatchSpy
@@ -43,6 +45,7 @@ describe('actions', () => {
     })
 
     it('makes dispatch with correct action', () => {
+      router.hashHistory = { push: ()=>{} }
       expect.spyOn(fetcher, 'httpLogin')
         .andReturn({then: (callback) => callback({fetchedData: 'fetchedData'})})
 
@@ -51,6 +54,19 @@ describe('actions', () => {
       expect(dispatchSpy).toHaveBeenCalled()
       expect(dispatchSpy.calls[0].arguments[0].type).toBe('LOGIN_SUCCESS')
       expect(dispatchSpy.calls[0].arguments[0].data).toEqual({fetchedData: 'fetchedData'})
+    })
+
+    it('redirects to bands page', () => {
+      const pushSpy = expect.createSpy()
+      router.hashHistory = { push: pushSpy }
+
+      const httpLoginSpy = expect.spyOn(fetcher, 'httpLogin')
+        .andReturn({then: (callback) => callback({fetchedData: 'fetchedData'})})
+
+      actions.loginThenDispatch(dispatchSpy, 'test user', 'test password')
+
+      expect(pushSpy).toHaveBeenCalled()
+      expect(pushSpy.calls[0].arguments[0]).toBe('/bands')
     })
   })
 })
