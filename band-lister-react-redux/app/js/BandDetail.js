@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class BandDetail extends React.Component {
   componentDidMount() {
@@ -21,10 +22,10 @@ export default class BandDetail extends React.Component {
 }
 
 BandDetail.propTypes = {
-  band: React.PropTypes.shape({
-    id: React.PropTypes.number,
-    name: React.PropTypes.string,
-    memberCount: React.PropTypes.number
+  band: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    memberCount: PropTypes.number
   }),
-  fetchBand: React.PropTypes.func.isRequired
+  fetchBand: PropTypes.func.isRequired
 }

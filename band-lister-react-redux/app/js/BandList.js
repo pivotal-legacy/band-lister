@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import PropTypes from 'prop-types'
 
 export default class BandList extends React.Component {
   componentDidMount() {
@@ -37,12 +38,12 @@ export default class BandList extends React.Component {
 }
 
 BandList.propTypes = {
-  bands: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      id: React.PropTypes.number,
-      name: React.PropTypes.string,
-      memberCount: React.PropTypes.number
+  bands: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      memberCount: PropTypes.number
     })
   ).isRequired,
-  fetchBands: React.PropTypes.func.isRequired
+  fetchBands: PropTypes.func.isRequired
 }

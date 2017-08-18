@@ -1,6 +1,6 @@
 import base64 from 'base-64'
 import { fetchWrapper } from './globalWrappers/fetchWrapper'
-import { getToken } from './globalWrappers/localStorageWrapper'
+import { getToken, setToken } from './globalWrappers/localStorageWrapper'
 
 export const httpGet = (url) => {
   const headers = {
@@ -8,7 +8,8 @@ export const httpGet = (url) => {
     'Content-Type': 'application/json',
     'x-auth-token': getToken()
   }
-  return fetchJson(url, {headers})
+  return fetchWrapper(url, {headers})
+    .then(rawData => rawData.json())
 }
 
 export const httpLogin = (url, username, password) => {
@@ -23,9 +24,8 @@ export const httpLogin = (url, username, password) => {
   }
 
   return fetchWrapper(url, options)
-}
-
-const fetchJson = (url, options) => {
-  return fetchWrapper(url, options)
-    .then(rawData => rawData.json())
+    .then(rawData => {
+      setToken(rawData.headers.get('x-auth-token'))
+      return rawData.json()
+    })
 }

@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
-import { setToken } from './globalWrappers/localStorageWrapper'
 
 export const bands = (state=[], action) => {
   const {type, data} = action
@@ -25,8 +24,7 @@ export const currentUser = (state={}, action) => {
   const { type, data } = action
   switch (type) {
     case 'LOGIN_SUCCESS':
-      setToken(data.headers.get('x-auth-token'))
-      return data.json()
+      return data
     default:
       return state
   }

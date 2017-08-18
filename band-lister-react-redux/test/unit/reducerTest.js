@@ -59,33 +59,11 @@ describe('reducer', () => {
   })
 
   describe('currentUser reducer', () => {
-    it('sets x-auth-token on successful action', () => {
-      const setTokenSpy = expect.spyOn(localStorage, 'setToken')
-      const getHeaderSpy = expect.createSpy().andReturn('fakeToken')
-
-      const type = 'LOGIN_SUCCESS'
-      const data = {
-        headers: {get: getHeaderSpy},
-        json: () => {}
-      }
-      const action = { type, data }
-
-      const nextState = reducer.currentUser(undefined, action)
-
-      expect(setTokenSpy).toHaveBeenCalled()
-      expect(setTokenSpy.calls[0].arguments[0]).toBe('fakeToken')
-    })
-
     it('sets current user to nextState on success', () => {
       const setTokenSpy = expect.spyOn(localStorage, 'setToken')
 
       const type = 'LOGIN_SUCCESS'
-      const data = {
-        headers: {get: ()=>{}},
-        json: () => {
-          return {username: 'test user'}
-        }
-      }
+      const data = {username: 'test user'}
       const action = { type, data }
 
       const nextState = reducer.currentUser(undefined, action)
