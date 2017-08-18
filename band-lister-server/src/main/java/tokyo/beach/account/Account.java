@@ -4,19 +4,17 @@ import java.io.Serializable;
 
 public class Account implements Serializable {
     private String username;
-    private String password;
 
-    public Account(String username, String password) {
+    public Account(String username) {
         this.username = username;
-        this.password = password;
+    }
+
+    public Account(DatabaseAccount databaseAccount) {
+        this.username = databaseAccount.getUsername();
     }
 
     public String getUsername() {
         return username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     @Override
@@ -26,23 +24,18 @@ public class Account implements Serializable {
 
         Account account = (Account) o;
 
-        //noinspection SimplifiableIfStatement
-        if (username != null ? !username.equals(account.username) : account.username != null) return false;
-        return password != null ? password.equals(account.password) : account.password == null;
+        return username != null ? username.equals(account.username) : account.username == null;
     }
 
     @Override
     public int hashCode() {
-        int result = username != null ? username.hashCode() : 0;
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
+        return username != null ? username.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Account{" +
                 "username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }

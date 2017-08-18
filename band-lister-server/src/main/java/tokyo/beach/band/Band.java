@@ -5,7 +5,7 @@ public class Band {
     private String name;
     private int memberCount;
 
-    public Band(long id, String name, int memberCount) {
+    Band(long id, String name, int memberCount) {
         this.id = id;
         this.name = name;
         this.memberCount = memberCount;
@@ -16,12 +16,12 @@ public class Band {
         return id;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public String getName() {
         return name;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public int getMemberCount() {
         return memberCount;
     }

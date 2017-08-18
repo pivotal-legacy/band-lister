@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tokyo.beach.account.Account;
 import tokyo.beach.account.AccountRepo;
+import tokyo.beach.account.DatabaseAccount;
 
 import java.util.List;
 
@@ -21,8 +22,9 @@ public class AccountUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountRepo.getByUsername(username);
+        DatabaseAccount databaseAccount = accountRepo.getByUsername(username);
+        Account account = new Account(databaseAccount);
         List<GrantedAuthority> valid_user = AuthorityUtils.createAuthorityList("VALID_USER");
-        return new AccountUserDetails(account.getUsername(), account.getPassword(), valid_user, account);
+        return new AccountUserDetails(databaseAccount.getUsername(), databaseAccount.getPassword(), valid_user, account);
     }
 }

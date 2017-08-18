@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import java.util.HashMap;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static tokyo.beach.TestDataSource.*;
 
@@ -29,8 +29,10 @@ public class AccountRepoTest {
     public void test_getByUsername_returnsAccount() throws Exception {
         createFakeAccount(jdbcTemplate, "bob", "abcd");
 
-        Account account = repo.getByUsername("bob");
+        DatabaseAccount account = repo.getByUsername("bob");
 
+        assertThat(account.getId(), is(notNullValue()));
+        assertThat(account.getUsername(), equalTo("bob"));
         assertThat(account.getUsername(), equalTo("bob"));
     }
 

@@ -24,7 +24,7 @@ public class LoginControllerTest {
     @Before
     public void setUp() throws Exception {
         LoginController loginController = new LoginController();
-        Account fakeAccount = new Account("test user", "test password");
+        Account fakeAccount = new Account("test user");
         mockController = standaloneSetup(loginController)
                 .setCustomArgumentResolvers(getAccountUserDetailsResolver(fakeAccount))
                 .build();
@@ -34,14 +34,13 @@ public class LoginControllerTest {
     public void test_login_returnsAccount() throws Exception {
         mockController.perform(post("/login"))
             .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.username", equalTo("test user")))
-            .andExpect(jsonPath("$.password", equalTo("test password")));
+            .andExpect(jsonPath("$.username", equalTo("test user")));
     }
 
     private HandlerMethodArgumentResolver getAccountUserDetailsResolver(Account account) {
         AccountUserDetails accountUserDetails = new AccountUserDetails(
                 account.getUsername(),
-                account.getPassword(),
+                "encrypted test password",
                 Collections.emptyList(),
                 account
         );

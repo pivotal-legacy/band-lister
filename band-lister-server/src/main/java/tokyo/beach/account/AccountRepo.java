@@ -11,11 +11,12 @@ public class AccountRepo {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Account getByUsername(String username) {
+    public DatabaseAccount getByUsername(String username) {
         String queryString = "SELECT * FROM accounts WHERE username=?";
         return jdbcTemplate.queryForObject(
                 queryString,
-                (rs, i) -> new Account(
+                (rs, i) -> new DatabaseAccount(
+                        rs.getLong("id"),
                         rs.getString("username"),
                         rs.getString("password")
                 ),
