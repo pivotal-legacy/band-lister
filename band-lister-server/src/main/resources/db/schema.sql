@@ -1,12 +1,12 @@
 DROP TABLE IF EXISTS bands;
 
-create table bands (
+CREATE TABLE bands (
   id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   name VARCHAR(100),
   member_count INT
 );
 
-create table accounts (
+CREATE TABLE accounts (
   id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   username VARCHAR(100),
   password VARCHAR(100)

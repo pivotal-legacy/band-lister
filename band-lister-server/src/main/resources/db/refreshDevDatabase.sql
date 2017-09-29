@@ -1,2 +1,2 @@
-drop database if exists band_lister_dev;
-create database band_lister_dev;
+DROP database IF EXISTS band_lister_dev;
+CREATE database band_lister_dev;
