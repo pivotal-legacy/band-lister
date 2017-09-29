@@ -1,5 +1,6 @@
 package tokyo.beach;
 import org.apache.tomcat.jdbc.pool.DataSource;
+import org.flywaydb.core.Flyway;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -45,11 +46,10 @@ public class TestDataSource {
 
     public static void loadInitialDatabaseSchema() throws SQLException {
         DataSource testDBDataSource = createDataSource();
-        Connection connection = testDBDataSource.getConnection();
 
-        URL url = new TestDataSource().getClass().getResource(DATABASE_SCRIPT_PATH + "/schema.sql");
-        Resource createSchemaResource = new UrlResource(url);
-        executeSqlScript(connection, createSchemaResource);
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(testDBDataSource);
+        flyway.migrate();
     }
 
     public static void cleanDatabaseTables(JdbcTemplate jdbcTemplate) {

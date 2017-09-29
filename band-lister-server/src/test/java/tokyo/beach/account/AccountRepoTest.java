@@ -43,6 +43,8 @@ public class AccountRepoTest {
         params.put("username", username);
         params.put("password", password);
 
+        jdbcTemplate.execute("SELECT * from accounts");
+
         return simpleJdbcInsert.withTableName("accounts").execute(params);
     }
 }

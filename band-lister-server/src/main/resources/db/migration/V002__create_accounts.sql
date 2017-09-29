@@ -1,0 +1,5 @@
+CREATE TABLE accounts (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  username VARCHAR(100),
+  password VARCHAR(100)
+);
