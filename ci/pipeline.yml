@@ -11,20 +11,40 @@ resources:
     tag: '5.7.17'
 
 jobs:
-- name: Client Unit Tests
+- name: React Client Unit Tests
   plan:
   - get: band-lister
     trigger: true
-  - task: unit-test-client
+  - task: unit-test-react-client
     config:
       platform: linux
       image_resource:
         type: docker-image
-        source: {repository: node}
+        source:
+          repository: node
       inputs:
       - name: band-lister
       run:
-        dir: band-lister/band-lister-client
+        dir: band-lister/band-lister-react
+        path: make
+        args:
+        - ci-unit
+
+- name: React Redux Client Unit Tests
+  plan:
+  - get: band-lister
+    trigger: true
+  - task: unit-test-react-redux-client
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: node
+      inputs:
+      - name: band-lister
+      run:
+        dir: band-lister/band-lister-react-redux
         path: make
         args:
         - ci-unit
