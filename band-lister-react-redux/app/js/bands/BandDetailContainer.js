@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
-
 import BandDetail from './BandDetail'
-import {fetchThenDispatch} from '../actions'
+import {fetchThenDispatch} from '../dataStore/actions'
 
 export const mapStateToProps = state => ({
   band: state.currentBand

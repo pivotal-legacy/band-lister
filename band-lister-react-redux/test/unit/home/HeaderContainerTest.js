@@ -1,4 +1,4 @@
-import { mapStateToProps } from '../../app/js/HeaderContainer'
+import { mapStateToProps } from '../../../app/js/home/HeaderContainer'
 import expect from 'expect'
 
 describe('HeaderContainer', () => {

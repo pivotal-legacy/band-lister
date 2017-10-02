@@ -1,7 +1,7 @@
 import expect from 'expect'
 
-import {mapStateToProps, mapDispatchToProps} from '../../app/js/bands/BandListContainer'
-import * as actions from '../../app/js/actions'
+import {mapStateToProps, mapDispatchToProps} from '../../../app/js/bands/BandListContainer'
+import * as actions from '../../../app/js/dataStore/actions'
 
 describe('BandListContainer', () => {
   beforeEach(() => expect.restoreSpies())

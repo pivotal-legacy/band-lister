@@ -1,10 +1,10 @@
 import React from 'react'
 import expect, {spyOn, createSpy} from 'expect'
-import * as actions from '../../app/js/actions'
-import * as fetcher from '../../app/js/fetcher'
-import AppComponent from '../../app/js/AppComponent'
+import * as actions from '../../../app/js/dataStore/actions'
+import * as fetcher from '../../../app/js/dataStore/fetcher'
+import AppComponent from '../../../app/js/AppComponent'
 import * as router from 'react-router'
-import * as localStorage from '../../app/js/globalWrappers/localStorageWrapper'
+import * as localStorage from '../../../app/js/globalWrappers/localStorageWrapper'
 
 describe('actions', () => {
   let dispatchSpy

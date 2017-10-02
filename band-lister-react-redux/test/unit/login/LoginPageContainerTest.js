@@ -1,6 +1,6 @@
 import { mapDispatchToProps } from '../../../app/js/login/LoginPageContainer'
 import expect from 'expect'
-import * as actions from '../../../app/js/actions'
+import * as actions from '../../../app/js/dataStore/actions'
 
 describe('LoginPageContainer', () => {
   beforeEach(() => expect.restoreSpies())

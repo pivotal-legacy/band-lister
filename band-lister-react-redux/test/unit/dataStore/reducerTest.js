@@ -1,7 +1,7 @@
 import expect from 'expect'
 
-import * as reducer from '../../app/js/reducer'
-import * as localStorage from '../../app/js/globalWrappers/localStorageWrapper'
+import * as reducer from '../../../app/js/dataStore/reducer'
+import * as localStorage from '../../../app/js/globalWrappers/localStorageWrapper'
 
 describe('reducer', () => {
   beforeEach(() => expect.restoreSpies())

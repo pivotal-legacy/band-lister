@@ -1,6 +1,6 @@
 import base64 from 'base-64'
-import { fetchWrapper } from './globalWrappers/fetchWrapper'
-import { getToken, setToken } from './globalWrappers/localStorageWrapper'
+import { fetchWrapper } from '../globalWrappers/fetchWrapper'
+import { getToken, setToken } from '../globalWrappers/localStorageWrapper'
 
 export const httpGet = (url) => {
   const headers = {

@@ -1,8 +1,8 @@
 import expect from 'expect'
 import base64 from 'base-64'
-import { httpGet, httpLogin } from '../../app/js/fetcher'
-import * as fetchWrapper from '../../app/js/globalWrappers/fetchWrapper'
-import * as localStorage from '../../app/js/globalWrappers/localStorageWrapper'
+import { httpGet, httpLogin } from '../../../app/js/dataStore/fetcher'
+import * as fetchWrapper from '../../../app/js/globalWrappers/fetchWrapper'
+import * as localStorage from '../../../app/js/globalWrappers/localStorageWrapper'
 
 describe('fetcher', () => {
   beforeEach(() => expect.restoreSpies())
