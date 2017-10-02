@@ -9,18 +9,22 @@
     "integration": "SERVER_URL='http://localhost:7070' NODE_SERVER_STARTUP_TIMEOUT=6000 mocha test/integration/local --timeout 30000",
     "ci-integration": "SERVER_URL='http://localhost:7070' mocha test/integration/ci --timeout 30000",
     "startIntegrationClient": "webpack-dev-server --content-base build/ --port 7000",
-    "postinstall": "selenium-standalone install"
+    "postinstall": "selenium-standalone install",
+    "lint": "./node_modules/eslint/bin/eslint.js -c .eslintrc app/js/*"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^6.3.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
     "enzyme": "^2.7.1",
+    "eslint": "^4.8.0",
+    "eslint-plugin-react": "^7.4.0",
     "expect": "^1.20.2",
     "html-webpack-plugin": "^2.28.0",
     "mocha": "^3.2.0",
@@ -32,5 +36,8 @@
     "webdriverio": "^4.6.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0"
   }
 }

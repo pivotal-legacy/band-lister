@@ -1,4 +1,5 @@
 import React from 'react'
+import {PropTypes} from 'prop-types'
 
 const BandList = (props) => {
     return (
@@ -30,11 +31,11 @@ const BandList = (props) => {
 
 
 BandList.propTypes = {
-    bands: React.PropTypes.arrayOf(
-        React.PropTypes.shape({
-            id: React.PropTypes.string,
-            name: React.PropTypes.string,
-            memberCount: React.PropTypes.string
+    bands: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string,
+            name: PropTypes.string,
+            memberCount: PropTypes.string
         })
     )
 };
