@@ -41,7 +41,7 @@ describe('integration tests', () => {
 
   it('has the correct header', async () => {
     const header = await browser.getText('h1')
-    expect(header).toBe('Band Lister')
+    expect(header).toBe('🎸BandLister🥁')
   })
 
   it('displays band names in a table', async () => {

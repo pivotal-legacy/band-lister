@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducer'
 import LayoutComponent from './LayoutComponent'
-import BandListContainer from './BandListContainer'
-import BandDetailContainer from './BandDetailContainer'
+import BandListContainer from './bands/BandListContainer'
+import BandDetailContainer from './bands/BandDetailContainer'
 import LoginPageContainer from './login/LoginPageContainer'
 
 export default function AppComponent() {

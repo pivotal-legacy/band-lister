@@ -2,7 +2,7 @@ import expect from 'expect'
 import { shallow, mount } from 'enzyme'
 import React from 'react'
 
-import BandDetail from '../../app/js/BandDetail'
+import BandDetail from '../../app/js/bands/BandDetail'
 
 describe('BandDetail', () => {
   it('renders current band details', () => {

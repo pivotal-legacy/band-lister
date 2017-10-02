@@ -1,6 +1,6 @@
 import expect from 'expect'
 
-import {mapStateToProps, mapDispatchToProps} from '../../app/js/BandDetailContainer'
+import {mapStateToProps, mapDispatchToProps} from '../../app/js/bands/BandDetailContainer'
 import * as actions from '../../app/js/actions'
 
 describe('BandDetailContainer', () => {
